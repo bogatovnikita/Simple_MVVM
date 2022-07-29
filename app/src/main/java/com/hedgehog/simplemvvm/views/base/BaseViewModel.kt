@@ -1,5 +1,6 @@
 package com.hedgehog.simplemvvm.views.base
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,5 +10,7 @@ typealias LiveEvent<T> = LiveData<Event<T>>
 typealias MutableLiveEvent<T> = MutableLiveData<Event<T>>
 
 open class BaseViewModel : ViewModel() {
-    open fun onResult(result: Any) {}
+    open fun onResult(result: Any) {
+        Log.e("pie", "BaseViewModel:onResult")
+    }
 }

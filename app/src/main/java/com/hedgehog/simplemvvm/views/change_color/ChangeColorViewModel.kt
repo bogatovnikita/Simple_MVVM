@@ -1,5 +1,6 @@
-package com.hedgehog.simplemvvm.views.changecolor
+package com.hedgehog.simplemvvm.views.change_color
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -37,10 +38,12 @@ class ChangeColorViewModel(
     }
 
     override fun onColorChosen(namedColor: NamedColor) {
+        Log.e("pie", "ChangeColorViewModel:onColorChosen")
         _currentColorId.value = namedColor.id
     }
 
     fun onSavePressed() {
+        Log.e("pie", "ChangeColorViewModel:onSavePressed")
         val currentColorId = _currentColorId.value ?: return
         val currentColor = colorsRepository.getById(currentColorId)
         colorsRepository.currentColor = currentColor
@@ -48,10 +51,12 @@ class ChangeColorViewModel(
     }
 
     fun onCancelPressed() {
+        Log.e("pie", "ChangeColorViewModel:onCancelPressed")
         navigator.goBack()
     }
 
     private fun mergeSources() {
+        Log.e("pie", "ChangeColorViewModel:mergeSources")
         val colors = _availableColors.value ?: return
         val currentColorId = _currentColorId.value ?: return
         val currentColor = colors.first { it.id == currentColorId }

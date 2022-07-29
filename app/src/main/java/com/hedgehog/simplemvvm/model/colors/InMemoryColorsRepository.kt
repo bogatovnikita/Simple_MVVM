@@ -1,10 +1,12 @@
 package com.hedgehog.simplemvvm.model.colors
 
 import android.graphics.Color
+import android.util.Log
 
 class InMemoryColorsRepository : ColorsRepository {
     override var currentColor: NamedColor = AVAILABLE_COLORS[0]
         set(value) {
+            Log.e("pie", "InMemoryColorsRepository:currentColor.value = $value//field = $field ")
             if (field != value) {
                 field = value
                 listeners.forEach {
@@ -22,11 +24,19 @@ class InMemoryColorsRepository : ColorsRepository {
     }
 
     override fun addListener(listener: (NamedColor) -> Unit) {
+        Log.e(
+            "pie",
+            "InMemoryColorsRepository:addListener: listener = $listener//listeners.size = ${listeners.size}"
+        )
         listeners += listener
         listener(currentColor)
     }
 
     override fun removeListener(listener: (NamedColor) -> Unit) {
+        Log.e(
+            "pie",
+            "InMemoryColorsRepository:removeListener: listener = $listener//listeners.size = ${listeners.size}"
+        )
         listeners -= listener
     }
 

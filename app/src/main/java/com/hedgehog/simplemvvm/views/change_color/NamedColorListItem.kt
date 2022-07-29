@@ -1,4 +1,4 @@
-package com.hedgehog.simplemvvm.views.changecolor
+package com.hedgehog.simplemvvm.views.change_color
 
 import com.hedgehog.simplemvvm.model.colors.NamedColor
 

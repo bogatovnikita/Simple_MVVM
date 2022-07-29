@@ -1,6 +1,7 @@
-package com.hedgehog.simplemvvm.views.changecolor
+package com.hedgehog.simplemvvm.views.change_color
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,7 @@ class ChangeColorFragment : BaseFragment(), HasScreenTitle {
             adapter.items = it
         }
         viewModel.screenTitle.observe(viewLifecycleOwner) {
+            Log.e("pie", "ChangeColorFragment:CreateView:notifyScreenUpdates")
             notifyScreenUpdates()
         }
 
@@ -41,6 +43,7 @@ class ChangeColorFragment : BaseFragment(), HasScreenTitle {
     }
 
     private fun setupLayoutManager(binding: FragmentChangeColorBinding, adapter: ColorsAdapter) {
+        Log.e("pie", "ChangeColorFragment:setupLayoutManager")
         binding.colorsRecyclerView.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 binding.colorsRecyclerView.viewTreeObserver.removeOnGlobalLayoutListener(this)

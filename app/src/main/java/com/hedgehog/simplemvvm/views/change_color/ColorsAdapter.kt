@@ -1,5 +1,6 @@
-package com.hedgehog.simplemvvm.views.changecolor
+package com.hedgehog.simplemvvm.views.change_color
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ class ColorsAdapter(
 
     var items: List<NamedColorListItem> = emptyList()
         set(value) {
+            Log.e("pie", "ColorsAdapter:items:value = $value//field = $field")
             field = value
             notifyDataSetChanged()
         }
@@ -20,6 +22,7 @@ class ColorsAdapter(
     override fun onClick(v: View) {
         val item = v.tag as NamedColor
         listener.onColorChosen(item)
+        Log.e("pie", "ColorsAdapter:onClick: item = $item")
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
